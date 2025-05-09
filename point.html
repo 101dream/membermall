@@ -72,6 +72,13 @@
       font-size: 14px;
       padding: 5px;
     }
+    #content-wrapper {
+        width: 900px;            /* 전체 너비 설정 */
+        margin: 30px auto;       /* 가운데 정렬 */
+        display: flex;           /* 가로 정렬 */
+        gap: 20px;               /* 배너와 테이블 사이 간격 */
+        align-items: flex-start; /* 높이 기준 정렬 깔끔하게 */
+    }
     #banner {
       margin: 30px;
       width: 150px; height: 350px;
@@ -87,7 +94,8 @@
       height: 350px;
     }
     #table > table {
-        width: 800px;
+        margin: 0 auto;
+        width: 500px;
         height: 700px;
     }
     #table th, #table td {
@@ -97,11 +105,6 @@
         padding: 10px;
         width: 400px;
         height: 300px;
-    }
-    #content-wrapper {
-        display: flex;
-        gap: 20px; /* 배너와 테이블 사이 간격 */
-        margin: 30px;
     }
   </style>
 </head>
