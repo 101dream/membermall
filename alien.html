@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        //<![CDATA[
+        function clickshow(elem,ID) {
+         var menu = document.getElementById(ID);
+         if (elem.className !='클릭할 객체의 이름') {
+            elem.className = '클릭할 객체의 이름';
+            menu.style.display = "none";
+         } else {
+            elem.className ='opened';
+            menu.style.display ="block";
+        }}
+        //]]>
+        window.onload = function() {
+            const items = document.querySelectorAll('.item');
+            const cartList = document.getElementById('cart-list');
+
+            items.forEach(item => {
+                item.style.cursor = 'pointer'; // 마우스 오버 시 손 모양
+                item.onclick = function() {
+                    const li = document.createElement('li');
+                    li.textContent = this.textContent;
+                    cartList.appendChild(li);
+                    };
+                });
+            };
+        function showPayment() {
+            const payBox = document.getElementById("payment-box");
+            payBox.style.display = "block";
+        }
+        function lockInput() {
+            const input = document.getElementById("username");
+            input.disabled = true; // 입력 불가능하게 만듦
+        }
+        function startPurchase() {
+          const input = document.getElementById("username");
+          const button = document.getElementById("confirmBtn");
+          const popup = document.getElementById("popup");
+
+          input.disabled = true;
+        
+          // 3초 후에 팝업 표시 및 타이머 시작
+          setTimeout(() => {
+            let seconds = 8;
+            popup.style.display = "block";
+        
+            // 초기 메시지
+            popup.innerHTML = `<b>성공 구매!</b><br><br>물건이 <ins>로켓</ins>을 탔다!<br><br><i>도착까지</i> <span id="timer">00:00:${seconds.toString().padStart(2, '0')}</span>`;
+        
+            // 타이머 시작
+            const interval = setInterval(() => {
+              seconds--;
+              const timerSpan = document.getElementById("timer");
+              if (seconds > 0) {
+                timerSpan.textContent = `00:00:${seconds.toString().padStart(2, '0')}`;
+              } else {
+                clearInterval(interval);
+                popup.innerHTML += `<br><b><i>도착!</i></b>`;
+                alert("도착!");
+              }
+            }, 1000);
+          }, 3000);
+        }
+    </script>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        #main {
+            width: 500px; top: 50%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        div {
+            align-content: center;
+        }
+        .first {
+            margin-bottom: 5px;
+        }
+        .first > h {
+            font-size: 30px;
+        }
+        i > a {
+            text-decoration: none;
+            color: rgb(0, 183, 0)
+        }
+        #contents {
+            font-size: 15px;
+            text-align: right;
+        }
+        #contents > i {
+            line-height: 1.8; /* 기본보다 약간 넓게 */
+        }
+        .red {
+            color: red;
+        }
+        #cart {
+            font-size: 15px;
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 200px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            font-size: 14px;
+            border: 1px solid black;
+        }
+        #cart > h4 {
+            text-align: center;
+        }
+        #cart > ul {
+            list-style: armenian;
+        }
+        #cart >div > input[type="button"] {
+            background: none;
+            border: none;
+            padding: 0;
+            margin: 0;
+            font: inherit;
+            color: inherit;
+            cursor: pointer;
+        }
+        #payment-box {
+            font-size: 15px;
+            position: fixed;
+            bottom: 20px;
+            left: 250px;
+            width: 300px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #000000;
+        }
+        #payment-box > p {
+            text-align: left;
+        }
+        #pay {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="main">
+        <div class="first">
+            <h><b><우주쇼핑몰></b></h>
+        </div>
+        <div>
+            <h><u>※외계에서 온 멋진 물건※~!!</u></h><br>
+            <h class="goods">>>나는 <i><a href="#"><span id="clickcontents" onclick="clickshow(this,'contents')">물건</span></a></i>을 본다</h>
+        </div>
+        <div id="contents" style="display:none;">
+            <i>
+                <br>
+                <b>물건</b>
+                <br><span class="item">흡혈 식기 - ₩14,999,999</span>
+                <br><span class="item">더넓은 무전기 - ₩4,999,999</span>
+                <br><span class="item">앨리스 피크닉세트 - ₩11,999,999</span>
+                <br><span class="item">우리가 도움! - ₩66,666,666</span>
+                <br><span class="item">※할인!※ 은화 뱀 - <span class="red">₩4,999,999</span></span>
+                <br><del>₩19,999,999</del>
+                <br>
+            </i>
+        </div>
+    </div>
+    <div id="cart">
+        <h4>장바구니</h4>
+        <ul id="cart-list"></ul>
+        <div style="text-align: right;">
+            <input type="button" value="구매하기" onclick="showPayment()" style="float: right; margin-top: 10px;">
+        </div>
+    </div> 
+    <div id="payment-box" style="display: none;">
+        <b>결제하기</b><br>
+        <p>무통장입금<br>>> 안드로메다 314159265358979 ㅇㄱㅇ</p>
+        <div id="pay">
+            <label for="username">입금자 이름</label>
+            <input id="username" type="text">
+            <input type="button" value="확인" onclick="startPurchase()">
+        </div>
+        <p style="font-size: 10px;"><i>신중히 입력!</i></p>
+    </div>
+    <div id="popup" style="display:none; margin-top:20px;"></div>
+</body>
+</html>

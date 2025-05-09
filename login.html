@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>로그인 페이지</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #f7f7f7;
+    }
+
+    .login-box {
+      width: 300px;
+      padding: 30px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      border-radius: 8px;
+    }
+
+    input {
+      width: 100%;
+      margin-bottom: 15px;
+      padding: 10px;
+      font-size: 16px;
+      box-sizing: border-box;
+    }
+
+    .password-container {
+      position: relative;
+    }
+
+    .password-container input {
+      padding-right: 60px;
+    }
+
+    .toggle-password {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      cursor: pointer;
+      font-size: 14px;
+      color: #919191;
+      user-select: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #3c3c3c;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #error {
+      margin-top: 10px;
+      color: rgb(135, 13, 13);
+      font-size: 14px;
+    }
+    .notice {
+      font-size: 10px;
+      color: #747474
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <h2>로그인</h2>
+    <input type="text" id="username" placeholder="아이디">
+    <div class="password-container">
+      <input type="password" id="password" placeholder="비밀번호">
+      <span class="toggle-password" onclick="togglePassword()">보기</span>
+    </div>
+    <button onclick="login()">로그인</button>
+    <p id="error"></p>
+    <p class="notice">백일몽주식회사 임직원들을 위한 복지몰입니다.<br>
+      임직원 인증코드로 로그인한 고객만 세부 내용을 확인할 수 있습니다.</p>
+  </div>
+
+  <script>
+    const validId = 'yongj1111';
+    const validPw = 'Dydajflgodks!111';
+
+    function login() {
+      const id = document.getElementById('username').value;
+      const pw = document.getElementById('password').value;
+
+      if (id === validId && pw === validPw) {
+        alert('환영합니다. 이자헌 과장님');
+        window.location.href = 'main.html';
+      } else {
+        alert('아이디 또는 비밀번호가 일치하지 않습니다.');
+        document.getElementById('error').innerText = '아이디 또는 비밀번호가 일치하지 않습니다.';
+      }
+    }
+
+    function togglePassword() {
+      const pwInput = document.getElementById('password');
+      const toggleBtn = document.querySelector('.toggle-password');
+      if (pwInput.type === 'password') {
+        pwInput.type = 'text';
+        toggleBtn.textContent = '숨기기';
+      } else {
+        pwInput.type = 'password';
+        toggleBtn.textContent = '보기';
+      }
+    }
+  </script>
+
+</body>
+</html>

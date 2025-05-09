@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>임직원 복지몰</title>
+
+  <style>
+    body {
+      font-family: serif;
+      margin: 0;
+    }
+    .page {
+      display: flex;
+      gap: 12px; /* 버튼 간 간격 */
+      padding: 10px;
+      margin-left: 20px;
+    }
+    .page input[type="button"] {
+      background: none;
+      border: none;
+      padding: 0;
+      margin: 0;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+    }
+    .account {
+      margin: 0px;
+      position: absolute;
+      top: 0px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end; /* 내부 요소도 오른쪽 정렬 */
+      font-size: 15px;
+    }
+    h1 {
+      font-size: 40px;
+      text-align: center;
+      margin-bottom: 0;
+    }
+    .menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 0;
+      gap: 40px;
+    }
+    .search-box {
+      display: flex;
+      align-items: center;
+      gap: 5px; /* 검색창과 버튼 간격 */
+  }
+    ul {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    ul > li {
+      margin: 0 20px;
+    }
+    ul > li > a {
+      text-decoration: none;
+      color: black;
+    }
+    ul > li > a:hover {
+      color: brown;
+    }
+    #search {
+      height: 30px;
+      font-size: 14px;
+      padding: 5px;
+    }
+    #banner {
+      margin: 30px;
+      width: 150px; height: 350px;
+      background-color: silver;
+    }
+    #banner > p {
+      text-align: center;
+      color: rgb(43, 43, 43);
+      line-height: 1.5; /* 일반적인 줄간격 */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 350px;
+    }
+    #table > table {
+        width: 800px;
+        height: 700px;
+    }
+    #table th, #table td {
+        padding: 10px 20px;
+    }
+    #table > table > table {
+        padding: 10px;
+        width: 400px;
+        height: 300px;
+    }
+    #content-wrapper {
+        display: flex;
+        gap: 20px; /* 배너와 테이블 사이 간격 */
+        margin: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <a href="main1.html"><input id="back" type="button" value="←"></a>
+    <input id="front" type="button" value="→">
+    <input id="f5" type="button" value="⟳">
+  </div>
+  <div class="account">
+    <p>이자헌 사원 / 적립포인트 : <span id="point">검토중&nbsp;</span>p</p>
+  </div>
+  <div>
+    <h1>백일몽주식회사 임직원 복지몰</h1>
+  </div>
+  <div class="menu">
+    <ul>
+      <li><a href="main.html">홈</a></li>
+      <li><a href="#">카테고리</a></li>
+      <li><a href="#">주문</a></li>
+      <li><a href="#">카트</a></li>
+      <li><a href="#">포인트등록</a></li>
+    </ul>
+    <div>
+      <input id="search" type="search" placeholder="검색어를 입력하세요">
+      <input id="button" type="button" value="🔍︎">
+    </div>
+  </div>
+  <hr>
+  <div id="content-wrapper">
+    <div id="banner">
+        <p>배너 문의는<br>010-1234-5678</p>
+    </div>
+    <div id="table">
+        <table border="1px">
+            <tr>
+                <th>
+                    포인트 등록
+                </th>
+                <td>
+                    <table border="1px">
+                        <tr>
+                            <th>
+                                <label for="select">등급 선택</label>
+                            </th>
+                            <td>
+                                <form id="pointupload">
+                                    <select id="select">
+                                        <option>F등급</option>
+                                        <option>D등급</option>
+                                        <option>C등급</option>
+                                        <option>B등급</option>
+                                        <option>A등급</option>
+                                        <option>S등급</option>
+                                    </select>
+                                </form>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="pdfUpload">PDF 첨부</label>
+                            </th>
+                            <td>
+                                <form id="pdfForm" enctype="multipart/form-data">
+                                    <input type="file" id="pdfUpload" name="pdfUpload" accept="application/pdf">
+                                </form>
+                            </td>
+                        </tr>
+                    </table>
+                    <div style="text-align: right; margin-top: 5px; margin-right: 60px;">
+                        <button type="submit" form="pointupload">제출</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    어둠 등급별 기본 지급 포인트
+                </th>
+                <td>
+                    F등급 : 100p<br>
+                    D등급 : 1000p<br>
+                    C등급 : 2500p<br>
+                    B등급 : 10000p<br>
+                    A등급 : 100000p<br>
+                    S등급 : 별도 심사
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    x
+                </th>
+                <td>
+                    x
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    x
+                </th>
+                <td>
+                    x
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    x
+                </th>
+                <td>
+                    x
+                </td>
+            </tr>
+            <tr>
+                <th>
+                    x
+                </th>
+                <td>
+                    x
+                </td>
+            </tr>
+        </table>
+    </div>
+  </div>
+  <script>
+    window.addEventListener("DOMContentLoaded", function () {
+        const button = document.querySelector('button[form="pointupload"]');
+        if (button) {
+            button.addEventListener("click", function (e) {
+                e.preventDefault();
+
+                const grade = document.getElementById("select").value;
+
+                const pointMap = {
+                    "F등급": 100,
+                    "D등급": 1000,
+                    "C등급": 2500,
+                    "B등급": 10000,
+                    "A등급": 100000,
+                    "S등급": 검토중
+                };
+
+                const point = pointMap[grade] ?? 0;
+                localStorage.setItem("savedPoint", point);
+                window.location.href = "main.html";
+            });
+        }
+
+        const saved = localStorage.getItem("savedPoint");
+        if (saved !== null) {
+            document.getElementById("point").textContent = saved;
+        }
+    });
+  </script>
+</body>
+</html>
